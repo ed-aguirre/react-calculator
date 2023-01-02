@@ -1,8 +1,8 @@
 
-import Wrapper from "./components/wrapper/wrapper";
-import Screen from "./components/screen/screen";
-import ButtonBox from "./components/buttonBox/buttonBox";
-import Button from "./components/button/button";
+import { Wrapper } from "./components/wrapper/wrapper";
+import { Screen } from "./components/screen/screen";
+import { ButtonBox } from "./components/buttonBox/buttonBox";
+import { Button } from "./components/button/button";
 
 const btnValues = [
   ["C", "+-", "%", "/"],
@@ -22,7 +22,7 @@ const App = () => {
               return(
                 <Button
                   key={i}
-                  className={btn === "=" ? "equals" : ""}
+                  className={btn === "=" ? "button equals" : "button"}
                   value={btn}
                   onClick={() => {
                     console.log(`${btn} clicked`);

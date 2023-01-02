@@ -6,4 +6,4 @@ const Screen = ({ value }) => {
     );
 };
 
-export default { Screen };
+export { Screen };

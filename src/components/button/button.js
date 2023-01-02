@@ -8,4 +8,4 @@ const Button = ({ className, onClick, value }) => {
     );
 };
 
-export default { Button };
+export { Button };
