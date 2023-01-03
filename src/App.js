@@ -29,7 +29,7 @@ const App = () => {
     e.preventDefault();
     const value = e.target.innerHTML;
 
-    if( removeSpaces(calc.num).length < 16 ){
+    if( removeSpaces(calc.num).length < 13 ){
       setCalc({
         ...calc,
         num:
@@ -55,7 +55,7 @@ const App = () => {
 
   const signClickHandler = (e) => {
     e.preventDefault();
-    const value = e.target.innerHTML();
+    const value = e.target.innerHTML;
 
     setCalc({
       ...calc,
