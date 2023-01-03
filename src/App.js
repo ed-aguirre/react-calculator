@@ -3,6 +3,7 @@ import { Wrapper } from "./components/wrapper/wrapper";
 import { Screen } from "./components/screen/screen";
 import { ButtonBox } from "./components/buttonBox/buttonBox";
 import { Button } from "./components/button/button";
+import React, { useState } from "react";
 
 const btnValues = [
   ["C", "+-", "%", "/"],
@@ -13,6 +14,12 @@ const btnValues = [
 ]
 
 const App = () => {
+  const [cal, setCal] = useState({
+    sign: "",
+    num: 0,
+    res: 0,
+  });
+
   return (
     <Wrapper>
       <Screen value="0" />
