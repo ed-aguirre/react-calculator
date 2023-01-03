@@ -29,15 +29,15 @@ const App = () => {
     e.preventDefault();
     const value = e.target.innerHTML;
 
-    if( calc.num.length < 16 ){
+    if( removeSpaces(calc.num).length < 16 ){
       setCalc({
         ...calc,
         num:
           calc.num === 0 && calc.num === "0"
             ? "0"
-            : calc.num % 1 === 0
-            ? Number( calc.num + value )
-            : calc.num + value,
+            : removeSpaces(calc.num) % 1 === 0
+            ? toLocalString(Number( calc.num + value ))
+            : toLocalString(calc.num + value),
         res: !calc.sign ? 0 : calc.res,
       });
     }
@@ -67,7 +67,7 @@ const App = () => {
 
   const equalsClickHandler = () => {
     if(calc.sign && calc.num){
-      const math = (a, b, sign) =>{
+      const mathe = (a, b, sign) =>
         sign === "+"
           ? a + b
           : sign === "-"
@@ -75,13 +75,15 @@ const App = () => {
           : sign === "X"
           ? a * b 
           : a / b;
-        }
+        
 
       setCalc({
         ...calc,
         res: calc.num === "0" && calc.sign === "/"
               ? "Can't divide with 0"
-              : math(Number(calc.res), Number(calc.num), calc.sign),
+              : toLocalString(
+                mathe(Number(calc.res), Number(calc.num), calc.sign)
+                ),
         sign: "",
         num: 0,
       });
@@ -91,15 +93,15 @@ const App = () => {
   const invertClickHandler = () => {
     setCalc({
       ...calc,
-      num: calc.num ? calc.num * -1 : 0,
-      res: calc.res ? calc.num * -1 : 0,
+      num: calc.num ? toLocalString(removeSpaces(calc.num)) * -1 : 0,
+      res: calc.res ? toLocalString(removeSpaces(calc.num)) * -1 : 0,
       sign: "",
     });
   };
 
   const percentClickHandler = () => {
-    const num = calc.num ? parseFloat(calc.num) : 0;
-    const res = calc.res ? parseFloat(calc.res) : 0;
+    let num = calc.num ? parseFloat(removeSpaces(calc.num)) : 0;
+    let res = calc.res ? parseFloat(removeSpaces(calc.res)) : 0;
 
     setCalc({
       ...calc,
